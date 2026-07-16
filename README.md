@@ -73,8 +73,8 @@ npm run dev
 
 | 이름/역할 | 담당 분야 | GitHub / 연락처 |
 | :--- | :--- | :--- |
-| **[권세혁]** (팀장) | 프로젝트 기획, 데이터 가공, Vue 3 컴포넌트 설계, Props/Emit 데이터 흐름 제어 및 핵심 화면 로직 구현 | • GitHub: [링크](https://github.com/saehyuk1661) <br> • Email: briankwon97@gmail.com |
-| **[오유정]** (팀원) | 프로젝트 기획, UI/UX 설계 및 전체적인 화면 디자인, OpenAI API 연동 및 시스템 프롬프트 제어, Netlify 배포 환경 구축 | • GitHub: [링크](https://github.com/ohyuj) <br> • Email: ohyuj7007@gmail.com |
+| **[권세혁]** (팀장) | 프로젝트 기획, 데이터 가공, etlify 배포 환경 구축, Props/Emit 데이터 흐름 제어 및 핵심 화면 로직 구현 | • GitHub: [링크](https://github.com/saehyuk1661) <br> • Email: briankwon97@gmail.com |
+| **[오유정]** (팀원) | 프로젝트 기획, UI/UX 설계 및 전체적인 화면 디자인, OpenAI API 연동 및 시스템 프롬프트 제어, Vue 3 컴포넌트 설계 | • GitHub: [링크](https://github.com/ohyuj) <br> • Email: ohyuj7007@gmail.com |
 | **[김정환]** (팀원) | 프로젝트 기획 | • GitHub: [링크](https://github.com/Jeonghwankimhub) <br> • Email: 이메일@gmail.com |
 
 ---

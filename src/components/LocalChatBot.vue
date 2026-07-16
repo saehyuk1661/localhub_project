@@ -25,9 +25,8 @@ async function sendMessage() {
   isLoading.value = true
 
   try {
-    const endpoint = import.meta.env.PROD
-      ? '/.netlify/functions/chat'
-      : '/api/chat'
+    // 브라우저에서는 /api/chat 으로 요청 (netlify.toml에서 리디렉트)
+    const endpoint = '/api/chat'
 
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -44,12 +43,15 @@ async function sendMessage() {
 
     if (!response.ok) {
       const errorText = await response.text()
-      throw new Error(`OpenAI API 오류: ${response.status} ${errorText}`)
+      throw new Error(`OpenAI proxy 오류: ${response.status} ${errorText}`)
     }
 
     const result = await response.json()
+    // 함수가 assistant 필드로 간단화된 응답을 반환합니다.
     const assistantText =
-      result?.choices?.[0]?.message?.content || '응답을 가져오지 못했습니다.'
+      result?.assistant ||
+      result?.choices?.[0]?.message?.content ||
+      '응답을 가져오지 못했습니다.'
 
     messages.value.push({ role: 'assistant', content: assistantText })
   } catch (error) {

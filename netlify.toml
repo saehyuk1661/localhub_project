@@ -1,0 +1,10 @@
+# netlify.toml
+[build]
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Map /api/* to Netlify Functions to allow browser calls to /api/chat
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
