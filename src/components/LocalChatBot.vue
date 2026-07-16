@@ -25,7 +25,11 @@ async function sendMessage() {
   isLoading.value = true
 
   try {
-    const response = await fetch('/api/chat', {
+    const endpoint = import.meta.env.PROD
+      ? '/.netlify/functions/chat'
+      : '/api/chat'
+
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
