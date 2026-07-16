@@ -26,7 +26,7 @@
 | :--- | :--- | :--- |
 | **Framework** | **Vue.js 3 (Vite)** | SFC 구조 기반의 빠르고 가벼운 정적 SPA 구축 |
 | **Styling** | **Tailwind CSS** | 유틸리티 클래스 활용, 일관성 있는 미니멀 화이트 UI 구현 |
-| **AI** | **OpenAI API** | 프론트엔드 직호출 방식을 통한 실시간 가이드 챗봇 연동 |
+| **AI** | **OpenAI API** | 프론트엔드 직호출 방식을 통한 실시간 가이드 챗봇 및 날씨 연동 |
 | **Database** | **LocalStorage** | 서버리스 환경에서 익명 게시글 데이터 반영구 보존 |
 | **Deployment** | **Netlify** | GitHub 저장소 연동을 통한 즉각적인 CD(지속적 배포) 환경 구축 |
 
@@ -84,8 +84,8 @@ npm run dev
 
 | 이름/역할 | 담당 분야 | GitHub / 연락처 |
 | :--- | :--- | :--- |
-| **[권세혁]** (팀장) | 프로젝트 기획, 데이터 가공, etlify 배포 환경 구축, Props/Emit 데이터 흐름 제어 및 핵심 화면 로직 구현 | • GitHub: [링크](https://github.com/saehyuk1661) <br> • Email: briankwon97@gmail.com |
-| **[오유정]** (팀원) | 프로젝트 기획, UI/UX 설계 및 전체적인 화면 디자인, OpenAI API 연동 및 시스템 프롬프트 제어, Vue 3 컴포넌트 설계 | • GitHub: [링크](https://github.com/ohyuj) <br> • Email: ohyuj7007@gmail.com |
+| **[권세혁]** (팀장) | 프로젝트 기획, 데이터 가공, etlify 배포 환경 구축, Props/Emit 데이터 흐름 제어 및 핵심 화면 로직 구현, 챗봇 구현 | • GitHub: [링크](https://github.com/saehyuk1661) <br> • Email: briankwon97@gmail.com |
+| **[오유정]** (팀원) | 프로젝트 기획, UI/UX 설계 및 전체적인 화면 디자인, OpenAI API 연동 및 시스템 프롬프트 제어, Vue 3 컴포넌트 설계, 날씨 정보 연동 | • GitHub: [링크](https://github.com/ohyuj) <br> • Email: ohyuj7007@gmail.com |
 | **[김정환]** (팀원) | 프로젝트 기획 | • GitHub: [링크](https://github.com/Jeonghwankimhub) <br> • Email: 이메일@gmail.com |
 
 ---
