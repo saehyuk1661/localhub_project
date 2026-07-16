@@ -8,6 +8,8 @@ import PostDetailView from './components/PostDetailView.vue'
 import PostWriteView from './components/PostWriteView.vue'
 import LocalChatBot from './components/LocalChatBot.vue'
 import DashboardView from './components/DashboardView.vue'
+import WeatherCard from './components/WeatherCard.vue'
+
 
 const currentPage = ref('home')
 const selectedDirectory = ref('spots')
@@ -227,6 +229,9 @@ function handleSearch(term) {
 </script>
 
 <template>
+  <div class="app">
+    <h1>구미 · 경북 여행 가이드</h1>
+  </div>
   <div class="min-h-screen bg-slate-200 text-slate-900">
     <NavigationHeader
       :currentPage="currentPage"
@@ -243,14 +248,17 @@ function handleSearch(term) {
         @open-directory="navigateDirectory"
         @navigate="navigate"
       />
+      <WeatherCard
+        v-else-if="currentPage === 'weather'"
+      />
       <DashboardView
-        v-if="currentPage === 'dashboard'"
+        v-else-if="currentPage === 'dashboard'"
         :allData="directoryData"
         :posts="posts"
       />
 
       <DataDirectoryView
-        v-if="currentPage === 'directory'"
+        v-else-if="currentPage === 'directory'"
         :directoryData="directoryData"
         :selectedCategory="selectedDirectory"
         @changeCategory="selectedDirectory = $event"
@@ -258,7 +266,7 @@ function handleSearch(term) {
       />
 
       <PostListView
-        v-if="currentPage === 'list'"
+        v-else-if="currentPage === 'list'"
         :posts="posts"
         :searchTerm="searchTerm"
         @viewDetail="openPostDetail"
@@ -267,7 +275,7 @@ function handleSearch(term) {
       />
 
       <PostDetailView
-        v-if="currentPage === 'detail'"
+        v-else-if="currentPage === 'detail'"
         :post="selectedPost"
         @editPost="editPost"
         @deletePost="deletePost"
@@ -286,6 +294,24 @@ function handleSearch(term) {
   </div>
 </template>
 
+
+
 <style>
-/* App.vue은 기본 구조만 유지하고 세부 스타일은 Tailwind로 처리합니다. */
+body {
+  margin: 0;
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 45%, #f8fafc 100%);
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+}
+
+.app h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  color: #0f172a;
+}
 </style>

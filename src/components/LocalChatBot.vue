@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY
+const apiKey = import.meta.env.OPENAI_API_KEY
 const isOpen = ref(false)
 const prompt = ref('')
 const isLoading = ref(false)

@@ -52,7 +52,7 @@ OpenAI API 호출을 위해 빌드 환경에 API 키를 등록해 주어야 합�
 1. Netlify 콘솔의 해당 프로젝트 대시보드 진입
 2. Site configuration -> Environment variables 메뉴로 이동
 3. [Add a variable] 버튼 클릭 후 아래의 값을 입력하고 저장
-   * Key: `VITE_OPENAI_API_KEY`
+   * Key: `OPENAI_API_KEY`
    * Value: (본인의 OpenAI API 실물 키 값 입력)[cite: 1]
 4. Deploys 메뉴에서 Trigger deploy -> Clear cache and deploy site를 실행하여 재배포 완료
 
@@ -66,7 +66,7 @@ cd localhub-gumi
 
 # 2. 패키지 설치 및 로컬 .env 설정
 npm install
-echo "VITE_OPENAI_API_KEY=your_actual_key_here" > .env
+echo "OPENAI_API_KEY=your_actual_key_here" > .env
 
 # 3. 개발 서버 실행
 npm run dev
