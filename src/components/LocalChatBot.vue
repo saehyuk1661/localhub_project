@@ -1,12 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY
 const isOpen = ref(false)
 const prompt = ref('')
 const isLoading = ref(false)
 const messages = ref([
-  
   {
     role: 'assistant',
     content: '구미·경북 지역에 대한 질문이 있으시면 편하게 물어보세요.'
@@ -18,31 +16,36 @@ function togglePanel() {
 }
 
 async function sendMessage() {
-  if (!prompt.value.trim()) return
-  if (!apiKey) return
+  const text = prompt.value.trim()
+  if (!text) return
 
-  const userMessage = { role: 'user', content: prompt.value.trim() }
+  const userMessage = { role: 'user', content: text }
   messages.value.push(userMessage)
   prompt.value = ''
   isLoading.value = true
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('/api/chat', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-5-mini',
         messages: messages.value,
         max_tokens: 400,
         temperature: 0.7
       })
     })
 
+    if (!response.ok) {
+      const errorText = await response.text()
+      throw new Error(`OpenAI API 오류: ${response.status} ${errorText}`)
+    }
+
     const result = await response.json()
-    const assistantText = result?.choices?.[0]?.message?.content || '응답을 가져오지 못했습니다.'
+    const assistantText =
+      result?.choices?.[0]?.message?.content || '응답을 가져오지 못했습니다.'
 
     messages.value.push({ role: 'assistant', content: assistantText })
   } catch (error) {
@@ -98,14 +101,10 @@ async function sendMessage() {
           ></textarea>
 
           <div class="mt-3 flex items-center justify-between gap-3">
-            <p class="text-xs text-slate-500" v-if="!apiKey">
-              OPENAI API 키를 `.env`에 추가해야 합니다.
-            </p>
-
             <button
               class="ml-auto rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-50"
               @click="sendMessage"
-              :disabled="!apiKey || isLoading"
+              :disabled="isLoading"
             >
               {{ isLoading ? '응답 생성 중...' : '보내기' }}
             </button>
