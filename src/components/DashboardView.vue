@@ -62,7 +62,7 @@ function createDonutChart() {
             categoryCounts.value.festivals,
             categoryCounts.value.accommodations
           ],
-          backgroundColor: ['#0f172a', '#0ea5e9', '#22c55e', '#64748b'],
+          backgroundColor: ['#ef4444', '#fbbf24', '#22c55e', '#1d4ed8'],
           borderColor: 'rgba(148, 163, 184, 0.16)',
           borderWidth: 1,
           hoverOffset: 10
@@ -85,7 +85,7 @@ function createDonutChart() {
           }
         },
         tooltip: {
-          backgroundColor: '#0f172a',
+          backgroundColor: '#38bdf8',
           titleColor: '#f8fafc',
           bodyColor: '#e2e8f0'
         }
@@ -109,7 +109,7 @@ function createBarChart() {
         {
           label: '게시글 수',
           data: values,
-          backgroundColor: '#0f172a',
+          backgroundColor: '#38bdf8',
           borderRadius: 10,
           categoryPercentage: 0.65,
           barPercentage: 0.7

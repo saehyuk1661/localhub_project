@@ -28,7 +28,7 @@ function changePage(page) {
   <header class="sticky top-0 z-30 border-b bg-white/95 px-4 py-4 shadow-sm backdrop-blur-sm">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4">
       <div class="text-2xl font-bold text-slate-800" style="font-family: 'Playfair Display', serif;">
-        구미 HUB
+        LocalHUB
       </div>
 
       <nav class="hidden items-center gap-4 md:flex">
