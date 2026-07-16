@@ -64,6 +64,7 @@ onMounted(loadWeather)
 </script>
 
 <template>
+
   <div class="max-w-xl mx-auto rounded-3xl bg-white shadow-lg p-8">
 
     <h2 class="text-3xl font-bold mb-6">

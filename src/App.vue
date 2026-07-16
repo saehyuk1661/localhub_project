@@ -229,9 +229,7 @@ function handleSearch(term) {
 </script>
 
 <template>
-  <div class="app">
-    <h1>구미 · 경북 여행 가이드</h1>
-  </div>
+  
   <div class="min-h-screen bg-slate-200 text-slate-900">
     <NavigationHeader
       :currentPage="currentPage"
@@ -275,7 +273,7 @@ function handleSearch(term) {
       />
 
       <PostDetailView
-        v-else-if="currentPage === 'detail'"
+        v--if="currentPage === 'detail'"
         :post="selectedPost"
         @editPost="editPost"
         @deletePost="deletePost"
