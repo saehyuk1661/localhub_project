@@ -1,4 +1,5 @@
 <script setup>
+
 const emit = defineEmits(['open-directory', 'navigate'])
 const props = defineProps({
   featuredData: {

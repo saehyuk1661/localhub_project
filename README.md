@@ -43,8 +43,19 @@
 
 ## 4. 배포 및 실행 방법
 
-### 1) 실시간 배포 주소
-* **배포 URL**: [https://여기에_본인의_넷리파이_배포_링크_넣기.netlify.app](https://여기에_본인의_넷리파이_배포_링크_넣기.netlify.app)
+본 프로젝트는 GitHub 저장소와 Netlify 서비스를 연동하여 지속적 배포(CD) 환경을 구축했습니다[cite: 1]. 
+
+### 1) 실시간 배포 사이트 주소
+* **배포 URL**: [https://여기에_본인의_넷리파이_배포_링크_넣기.netlify.app](https://여기에_본인의_넷리파이_배포_링크_넣기.netlify.app)[cite: 1]
+
+### 2) Netlify 배포 환경 변수 설정 방법 (중요)
+OpenAI API 호출을 위해 빌드 환경에 API 키를 등록해 주어야 합니다. 깃허브에는 .env 파일이 업로드되지 않으므로 아래의 과정을 거쳐 설정합니다[cite: 1].
+1. Netlify 콘솔의 해당 프로젝트 대시보드 진입
+2. Site configuration -> Environment variables 메뉴로 이동
+3. [Add a variable] 버튼 클릭 후 아래의 값을 입력하고 저장
+   * Key: `OPENAI_API_KEY`
+   * Value: (본인의 OpenAI API 실물 키 값 입력)[cite: 1]
+4. Deploys 메뉴에서 Trigger deploy -> Clear cache and deploy site를 실행하여 재배포 완료
 
 ### 2) Netlify 환경 변수 설정 (중요)
 깃허브에 업로드되지 않는 OpenAI API 키를 배포 서버에 등록해야 정상 작동합니다.

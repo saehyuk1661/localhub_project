@@ -35,6 +35,9 @@ function changePage(page) {
         <button class="rounded-full px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100" @click="go('home')">
           홈
         </button>
+        <button class="rounded-full px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100" @click="go('weather')">
+          날씨
+        </button>
         <button class="rounded-full px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100" @click="go('directory')">
           관광안내
         </button>
