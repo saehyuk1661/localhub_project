@@ -273,7 +273,7 @@ function handleSearch(term) {
       />
 
       <PostDetailView
-        v--if="currentPage === 'detail'"
+        v-else-if="currentPage === 'detail'"
         :post="selectedPost"
         @editPost="editPost"
         @deletePost="deletePost"

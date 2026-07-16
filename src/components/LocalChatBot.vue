@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 
-const apiKey = import.meta.env.OPENAI_API_KEY
 const isOpen = ref(false)
 const prompt = ref('')
 const isLoading = ref(false)
@@ -26,20 +25,19 @@ async function sendMessage() {
   isLoading.value = true
 
   try {
-    // 브라우저에서는 /api/chat 으로 요청 (netlify.toml에서 리디렉트)
     const endpoint = '/api/chat'
+
+    const payload = {
+      model: 'gpt-5-mini',
+      messages: messages.value,
+      max_completion_tokens: 400,
+      reasoning_effort: 'minimal'
+    };
 
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'gpt-5-mini',
-        messages: messages.value,
-        max_tokens: 400,
-        temperature: 0.7
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     })
 
     if (!response.ok) {
@@ -48,7 +46,6 @@ async function sendMessage() {
     }
 
     const result = await response.json()
-    // 함수가 assistant 필드로 간단화된 응답을 반환합니다.
     const assistantText =
       result?.assistant ||
       result?.choices?.[0]?.message?.content ||
@@ -70,18 +67,13 @@ async function sendMessage() {
 <template>
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
     <transition name="slide-up">
-      <div
-        v-if="isOpen"
-        class="w-[320px] rounded-3xl border border-slate-200 bg-white/95 shadow-2xl backdrop-blur-xl"
-      >
+      <div v-if="isOpen" class="w-[320px] rounded-3xl border border-slate-200 bg-white/95 shadow-2xl backdrop-blur-xl">
         <div class="flex items-center justify-between rounded-t-3xl bg-slate-900 px-5 py-4 text-white">
           <div>
             <p class="text-sm font-semibold">구미 Hub AI 가이드</p>
             <p class="text-xs text-slate-300">구미·경북 전문 지역 가이드</p>
           </div>
-          <button class="rounded-full bg-white/10 px-3 py-1 text-xs" @click="togglePanel">
-            닫기
-          </button>
+          <button class="rounded-full bg-white/10 px-3 py-1 text-xs" @click="togglePanel">닫기</button>
         </div>
 
         <div class="max-h-96 space-y-3 overflow-y-auto px-4 py-4">
@@ -90,9 +82,7 @@ async function sendMessage() {
             :key="index"
             :class="[
               'rounded-3xl px-4 py-3 text-sm leading-6',
-              message.role === 'assistant'
-                ? 'bg-slate-100 text-slate-900'
-                : 'bg-slate-900 text-white'
+              message.role === 'assistant' ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'
             ]"
           >
             <p>{{ message.content }}</p>
